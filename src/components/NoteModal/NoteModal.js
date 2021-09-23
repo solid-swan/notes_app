@@ -7,12 +7,20 @@ class NoteModal extends Component {
     show: false,
     notes: [],
   };
-  closeModal = () => {};
+
+  openModal = () => {
+    this.setState({ show: true });
+  };
+  closeModal = () => {
+    this.setState({ show: false });
+  };
 
   render() {
     return (
       <div>
-        <Button variant="primary">Edit Entry</Button>
+        <Button variant="primary" onClick={this.openModal}>
+          Edit Entry
+        </Button>
 
         <Modal
           show={this.state.show}
@@ -28,10 +36,10 @@ class NoteModal extends Component {
             escape key.
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
+            <Button variant="danger" onClick={this.closeModal}>
+              Cancel
             </Button>
-            <Button variant="primary">Understood</Button>
+            <Button variant="primary">Save</Button>
           </Modal.Footer>
         </Modal>
       </div>
